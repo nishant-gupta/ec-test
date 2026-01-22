@@ -1,0 +1,39 @@
+{
+  "variantName": "carousel-hero",
+  "baseBlock": "carousel",
+  "version": "1.0.0",
+  "created": "2026-01-22T15:43:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.marutisuzukidrivingschool.com/",
+    "originPage": "Homepage",
+    "blockPosition": "top"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "spacious",
+    "purpose": "hero-carousel",
+    "imagePattern": "large"
+  },
+  "contentPattern": {
+    "structure": "image + heading + subheading + CTA",
+    "buttonCount": 1,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "homepage hero sections",
+      "landing page banners",
+      "promotional carousels"
+    ],
+    "notSuitableFor": [
+      "product galleries",
+      "thumbnail carousels",
+      "text-only slides"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/content/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-01-22T15:43:00.000Z"
+  }
+}
