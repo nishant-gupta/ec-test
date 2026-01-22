@@ -1,3 +1,5 @@
+/* Carousel Hero Block - Maruti Suzuki Driving School */
+
 .carousel-hero .carousel-hero-slides-container {
   position: relative;
 }
@@ -51,42 +53,86 @@
   object-fit: cover;
 }
 
+/* Slide content - Maruti Suzuki styling */
 .carousel-hero .carousel-hero-slide .carousel-hero-slide-content {
   z-index: 1;
-  margin: 68px;
-  padding: 16px;
+  margin: 40px 20px;
+  padding: 25px;
   color: white;
-  background-color: rgba(19 19 19 / 75%);
+  background-color: rgba(23, 28, 143, 0.85);
   position: relative;
   width: var(--slide-content-width, auto);
+  border-radius: 5px;
 }
 
+/* Headings in carousel */
+.carousel-hero .carousel-hero-slide-content h1,
+.carousel-hero .carousel-hero-slide-content h2,
+.carousel-hero .carousel-hero-slide-content h3 {
+  color: var(--color-white, #fff);
+  font-weight: 700;
+  margin: 0 0 15px;
+  line-height: 1.2;
+  font-size: 24px;
+}
+
+.carousel-hero .carousel-hero-slide-content p {
+  color: var(--color-white, #fff);
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 20px;
+  opacity: 0.95;
+}
+
+/* CTA Button in carousel */
+.carousel-hero .carousel-hero-slide-content a {
+  display: inline-block;
+  background: var(--color-white, #fff);
+  color: var(--color-brand-primary, #171c8f);
+  padding: 13px 25px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.carousel-hero .carousel-hero-slide-content a:hover {
+  background: var(--color-brand-primary-light, #f0f0ff);
+  transform: translateY(-2px);
+}
+
+/* Slide indicators - Maruti Suzuki styling */
 .carousel-hero .carousel-hero-slide-indicators {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 6px 12px;
-  padding: 12px;
-  background-color: var(--light-color);
+  padding: 15px;
+  background-color: var(--color-background-light, #f9f8fe);
   line-height: 0;
 }
 
 .carousel-hero .carousel-hero-slide-indicator button {
-  width: 24px;
-  height: 24px;
+  width: 12px;
+  height: 12px;
   margin: 0;
   padding: 0;
   border-radius: 50%;
-  background-color: #dadada;
+  background-color: #ccc;
+  border: none;
+  cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .carousel-hero .carousel-hero-slide-indicator button:disabled,
 .carousel-hero .carousel-hero-slide-indicator button:hover,
 .carousel-hero .carousel-hero-slide-indicator button:focus-visible {
-  background-color: var(--text-color);
+  background-color: var(--color-brand-primary, #171c8f);
 }
 
+/* Navigation buttons - Maruti Suzuki styling */
 .carousel-hero .carousel-hero-navigation-buttons {
   position: absolute;
   top: 50%;
@@ -107,19 +153,21 @@
   margin: 0;
   border-radius: 50%;
   padding: 0;
-  background-color: rgba(19 19 19 / 25%);
+  background-color: rgba(23, 28, 143, 0.6);
+  border: none;
+  cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .carousel-hero .carousel-hero-navigation-buttons button:hover,
 .carousel-hero .carousel-hero-navigation-buttons button:focus-visible {
-  background-color: rgba(19 19 19 / 75%);
+  background-color: rgba(23, 28, 143, 0.9);
 }
 
 .carousel-hero .carousel-hero-navigation-buttons button::after {
   display: block;
   content: '';
-  border: 2px solid;
+  border: 2px solid white;
   border-bottom: 0;
   border-left: 0;
   height: 12px;
@@ -144,10 +192,32 @@
   .carousel-hero .carousel-hero-slide .carousel-hero-slide-content {
     --slide-content-width: calc((100% - 184px) / 2);
 
-    margin: 92px;
+    margin: 60px 50px;
+    padding: 30px;
+  }
+
+  .carousel-hero .carousel-hero-slide-content h2,
+  .carousel-hero .carousel-hero-slide-content h3 {
+    font-size: 28px;
   }
 
   .carousel-hero .carousel-hero-slide .carousel-hero-slide-content[data-align='justify'] {
     --slide-content-width: auto;
+  }
+}
+
+@media (width >= 900px) {
+  .carousel-hero .carousel-hero-slide .carousel-hero-slide-content {
+    margin: 80px;
+    padding: 35px;
+  }
+
+  .carousel-hero .carousel-hero-slide-content h2,
+  .carousel-hero .carousel-hero-slide-content h3 {
+    font-size: 32px;
+  }
+
+  .carousel-hero .carousel-hero-slide-content p {
+    font-size: 18px;
   }
 }
