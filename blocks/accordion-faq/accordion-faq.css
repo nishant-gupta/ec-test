@@ -1,61 +1,139 @@
+/* Accordion FAQ Block - Maruti Suzuki Driving School */
+
+.accordion-faq {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Individual FAQ item */
 .accordion-faq details {
-  border: 1px solid #dadada;
+  background: var(--color-white, #fff);
+  border: 1px solid rgb(219 226 234);
+  border-radius: 5px;
+  margin-bottom: 15px;
+  overflow: hidden;
 }
 
-/* stylelint-disable-next-line no-descending-specificity */
-.accordion-faq details + details {
-  margin-top: 24px;
+.accordion-faq details:last-child {
+  margin-bottom: 0;
 }
 
-.accordion-faq details p {
-  margin-bottom: 0.8em;
-}
-
+/* Question/Summary styling */
 .accordion-faq details summary {
   position: relative;
-  padding: 0 16px;
-  padding-right: 46px;
+  padding: 18px 50px 18px 20px;
   cursor: pointer;
   list-style: none;
-  overflow: auto;
-  transition: background-color 0.2s;
-}
-
-.accordion-faq details[open] summary {
-  background-color: var(--light-color);
-}
-
-.accordion-faq details summary:focus,
-.accordion-faq details summary:hover {
-  background-color: var(--light-color);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-brand-primary, #171c8f);
+  line-height: 1.4;
+  transition: background-color 0.2s ease;
 }
 
 .accordion-faq details summary::-webkit-details-marker {
   display: none;
 }
 
+.accordion-faq details summary::marker {
+  display: none;
+}
+
+/* Expand/collapse arrow */
 .accordion-faq details summary::after {
   content: '';
   position: absolute;
   top: 50%;
-  right: 18px;
-  transform: translateY(-50%) rotate(135deg);
-  width: 6px;
-  height: 6px;
-  border: 2px solid;
-  border-width: 2px 2px 0 0;
-  transition: transform 0.2s;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--color-brand-primary, #171c8f);
+  border-width: 0 2px 2px 0;
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 0.2s ease;
 }
 
 .accordion-faq details[open] summary::after {
-  transform: translateY(-50%) rotate(-45deg);
+  transform: translateY(-30%) rotate(-135deg);
 }
 
-.accordion-faq details .accordion-faq-item-body {
-  padding: 0 16px;
+/* Hover state */
+.accordion-faq details summary:hover {
+  background: var(--color-background-light, #f9f8fe);
 }
 
-.accordion-faq details[open] .accordion-faq-item-body {
-  border-top: 1px solid #dadada;
-  background-color: var(--background-color);
+/* Open state header */
+.accordion-faq details[open] summary {
+  background: var(--color-background-light, #f9f8fe);
+  border-bottom: 1px solid rgb(219 226 234);
+}
+
+/* Answer/Content styling */
+.accordion-faq details .accordion-faq-item-body,
+.accordion-faq details > div:last-child {
+  padding: 20px;
+  background: var(--color-white, #fff);
+}
+
+.accordion-faq details p {
+  margin: 0 0 15px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-color, #000);
+}
+
+.accordion-faq details p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lists in answers */
+.accordion-faq details ul,
+.accordion-faq details ol {
+  margin: 0 0 15px;
+  padding-left: 20px;
+}
+
+.accordion-faq details li {
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-color, #000);
+}
+
+/* Links in answers */
+.accordion-faq details a {
+  color: var(--color-brand-primary, #171c8f);
+  text-decoration: underline;
+}
+
+.accordion-faq details a:hover {
+  color: var(--color-brand-primary-dark, #131776);
+}
+
+/* Section heading above accordion */
+.accordion-faq-wrapper h2,
+.accordion-faq-wrapper h3 {
+  color: var(--color-brand-primary, #171c8f);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .accordion-faq {
+    padding: 30px 0;
+  }
+
+  .accordion-faq details summary {
+    padding: 20px 55px 20px 25px;
+    font-size: 17px;
+  }
+
+  .accordion-faq details .accordion-faq-item-body,
+  .accordion-faq details > div:last-child {
+    padding: 25px;
+  }
 }

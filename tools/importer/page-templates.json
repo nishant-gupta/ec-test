@@ -1,0 +1,52 @@
+{
+  "templates": [
+    {
+      "name": "Homepage",
+      "urls": [
+        "https://www.marutisuzukidrivingschool.com/"
+      ],
+      "description": "Main homepage template with hero carousel, stats, courses, testimonials, coaches, and FAQ sections",
+      "blocks": [
+        {
+          "name": "carousel-hero",
+          "instances": [
+            ".homBannerSection .topsliderMain",
+            ".owl-carousel.topmain_slider"
+          ],
+          "section": "hero"
+        },
+        {
+          "name": "cards-stats",
+          "instances": [
+            ".whyChooseMain .studentFacultyDealer",
+            ".courseBannerMain .coursesRptSec",
+            ".valueAddedSec .valuaddedBox",
+            ".blogSec .blogSecRptSec",
+            ".testimonialMainSec .testimonialSliderSec",
+            ".expertCoachesMain .trainerBoxRpt",
+            ".mediaContainer .mediaRptSec",
+            ".faqAboveTxt"
+          ],
+          "section": "content"
+        },
+        {
+          "name": "columns-cta",
+          "instances": [
+            ".quizBoxMainSec",
+            ".schoolLocatorSec",
+            ".corporateTraingSec"
+          ],
+          "section": "cta"
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            ".accordionBlockMain",
+            "#accordionFaqHome"
+          ],
+          "section": "faq"
+        }
+      ]
+    }
+  ]
+}
