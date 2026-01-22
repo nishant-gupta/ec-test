@@ -14,6 +14,52 @@ import {
 } from './aem.js';
 
 /**
+ * Moves instrumentation attributes from a source element to a target element.
+ * @param {Element} from The source element
+ * @param {Element} to The target element
+ */
+export function moveInstrumentation(from, to) {
+  // Move AEM Universal Editor instrumentation attributes
+  [...from.attributes]
+    .filter((attr) => attr.name.startsWith('data-aue-') || attr.name.startsWith('data-richtext-'))
+    .forEach((attr) => {
+      to.setAttribute(attr.name, attr.value);
+      from.removeAttribute(attr.name);
+    });
+}
+
+/**
+ * Fetches placeholders from the placeholders.json file.
+ * @param {string} prefix Optional prefix for placeholder keys
+ * @returns {Promise<Object>} Placeholder key-value pairs
+ */
+export async function fetchPlaceholders(prefix = 'default') {
+  window.placeholders = window.placeholders || {};
+  if (!window.placeholders[prefix]) {
+    window.placeholders[prefix] = new Promise((resolve) => {
+      fetch(`${window.hlx?.codeBasePath || ''}/placeholders.json`)
+        .then((resp) => {
+          if (resp.ok) {
+            return resp.json();
+          }
+          return { data: [] };
+        })
+        .then((json) => {
+          const placeholders = {};
+          json.data
+            .filter((placeholder) => placeholder.Key)
+            .forEach((placeholder) => {
+              placeholders[placeholder.Key] = placeholder.Text;
+            });
+          resolve(placeholders);
+        })
+        .catch(() => resolve({}));
+    });
+  }
+  return window.placeholders[prefix];
+}
+
+/**
  * Builds hero block and prepends to main in a new section.
  * @param {Element} main The container element
  */
