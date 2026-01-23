@@ -1,29 +1,41 @@
-/* Testimonials Carousel Block */
+/* Testimonials Carousel Block - Auto-scrolling Marquee */
 .testimonials-carousel {
   padding: 40px 0;
   overflow: hidden;
+  background: #f8f9fa;
 }
 
 .testimonials-carousel-container {
   position: relative;
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 60px;
-}
-
-.testimonials-carousel-viewport {
   overflow: hidden;
 }
 
 .testimonials-carousel-track {
   display: flex;
-  transition: transform 0.4s ease-in-out;
+  gap: 20px;
+  animation: testimonials-scroll 30s linear infinite;
+  width: max-content;
+}
+
+.testimonials-carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes testimonials-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .testimonials-carousel-slide {
-  flex: 0 0 33.333%;
-  max-width: 33.333%;
-  padding: 0 12px;
+  flex: 0 0 320px;
+  max-width: 320px;
   box-sizing: border-box;
 }
 
@@ -31,33 +43,18 @@
 .testimonials-carousel-card {
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 12px rgb(0 0 0 / 10%);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 8%);
+  border: 1px solid #eee;
   padding: 24px;
   height: 100%;
   min-height: 280px;
   display: flex;
   flex-direction: column;
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
 
 .testimonials-carousel-card:hover {
-  box-shadow: 0 4px 20px rgb(0 0 0 / 15%);
-  transform: translateY(-2px);
-}
-
-/* Optional image */
-.testimonials-carousel-image {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-bottom: 16px;
-}
-
-.testimonials-carousel-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  box-shadow: 0 4px 20px rgb(0 0 0 / 12%);
 }
 
 /* Card body */
@@ -70,19 +67,19 @@
 /* Course type - blue header */
 .testimonials-course-type {
   color: var(--color-brand-primary, #171c8f);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   line-height: 1.3;
 }
 
-/* Quote headline - blue, slightly smaller */
+/* Quote headline - blue, italic */
 .testimonials-quote {
   color: var(--color-brand-primary, #171c8f);
   font-size: 15px;
   font-weight: 600;
   line-height: 1.4;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   font-style: italic;
 }
 
@@ -97,9 +94,7 @@
 
 /* Author section */
 .testimonials-author {
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid #eee;
+  margin-top: 16px;
 }
 
 .testimonials-author-name {
@@ -115,88 +110,49 @@
   margin-top: 2px;
 }
 
-/* Navigation buttons */
-.testimonials-carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border: 2px solid var(--color-brand-primary, #171c8f);
-  border-radius: 50%;
-  background: #fff;
-  color: var(--color-brand-primary, #171c8f);
-  font-size: 24px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
-}
-
-.testimonials-carousel-nav:hover:not(:disabled) {
-  background: var(--color-brand-primary, #171c8f);
-  color: #fff;
-}
-
-.testimonials-carousel-nav:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-.testimonials-carousel-prev {
-  left: 5px;
-}
-
-.testimonials-carousel-next {
-  right: 5px;
-}
-
-.testimonials-carousel-nav span {
-  line-height: 1;
-  margin-top: -2px;
-}
-
-/* Responsive */
-@media (max-width: 1023px) {
-  .testimonials-carousel-slide {
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-
-  .testimonials-carousel-container {
-    padding: 0 50px;
-  }
-}
-
+/* Touch/swipe support for mobile */
 @media (max-width: 767px) {
+  .testimonials-carousel-track {
+    animation: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 10px 20px;
+  }
+
+  .testimonials-carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+
   .testimonials-carousel-slide {
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-
-  .testimonials-carousel-container {
-    padding: 0 45px;
-  }
-
-  .testimonials-carousel-nav {
-    width: 36px;
-    height: 36px;
-    font-size: 20px;
+    flex: 0 0 280px;
+    max-width: 280px;
+    scroll-snap-align: start;
   }
 
   .testimonials-carousel-card {
-    min-height: 240px;
+    min-height: 260px;
     padding: 20px;
   }
 
   .testimonials-course-type {
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .testimonials-quote {
     font-size: 14px;
+  }
+}
+
+/* Wide screen optimization */
+@media (min-width: 1400px) {
+  .testimonials-carousel-slide {
+    flex: 0 0 360px;
+    max-width: 360px;
+  }
+
+  .testimonials-carousel-track {
+    gap: 24px;
   }
 }

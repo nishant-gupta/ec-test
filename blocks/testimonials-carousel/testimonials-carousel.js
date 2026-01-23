@@ -6,14 +6,11 @@ export default function decorate(block) {
   const carousel = document.createElement('div');
   carousel.className = 'testimonials-carousel-container';
 
-  const viewport = document.createElement('div');
-  viewport.className = 'testimonials-carousel-viewport';
-
   const track = document.createElement('div');
   track.className = 'testimonials-carousel-track';
 
-  // Process each testimonial card
-  cards.forEach((card) => {
+  // Function to create a testimonial card
+  function createCard(card) {
     const slide = document.createElement('div');
     slide.className = 'testimonials-carousel-slide';
 
@@ -22,18 +19,7 @@ export default function decorate(block) {
 
     const cols = [...card.children];
     if (cols.length >= 2) {
-      // First column might have image (optional for testimonials)
-      const imgCol = cols[0];
       const contentCol = cols[1];
-
-      // Check if there's an image
-      const img = imgCol.querySelector('img');
-      if (img) {
-        const imgWrapper = document.createElement('div');
-        imgWrapper.className = 'testimonials-carousel-image';
-        imgWrapper.appendChild(img.cloneNode(true));
-        cardEl.appendChild(imgWrapper);
-      }
 
       // Process content column
       const cardBody = document.createElement('div');
@@ -51,7 +37,7 @@ export default function decorate(block) {
       }
 
       // Find the quote (text in quotes)
-      paragraphs.forEach((p, index) => {
+      paragraphs.forEach((p) => {
         const text = p.textContent.trim();
         if (text.startsWith('"') && text.endsWith('"') && !text.includes('-')) {
           // This is the main quote
@@ -99,82 +85,54 @@ export default function decorate(block) {
     }
 
     slide.appendChild(cardEl);
-    track.appendChild(slide);
+    return slide;
+  }
+
+  // Process each testimonial card
+  cards.forEach((card) => {
+    track.appendChild(createCard(card));
   });
 
-  viewport.appendChild(track);
+  // Duplicate cards for infinite scroll effect (only for desktop auto-scroll)
+  cards.forEach((card) => {
+    track.appendChild(createCard(card));
+  });
 
-  // Create navigation
-  const prevBtn = document.createElement('button');
-  prevBtn.className = 'testimonials-carousel-nav testimonials-carousel-prev';
-  prevBtn.innerHTML = '<span>&#8249;</span>';
-  prevBtn.setAttribute('aria-label', 'Previous testimonial');
-
-  const nextBtn = document.createElement('button');
-  nextBtn.className = 'testimonials-carousel-nav testimonials-carousel-next';
-  nextBtn.innerHTML = '<span>&#8250;</span>';
-  nextBtn.setAttribute('aria-label', 'Next testimonial');
-
-  carousel.appendChild(prevBtn);
-  carousel.appendChild(viewport);
-  carousel.appendChild(nextBtn);
+  carousel.appendChild(track);
 
   // Clear and append
   block.textContent = '';
   block.appendChild(carousel);
 
-  // Carousel logic
-  let currentIndex = 0;
+  // Touch/swipe handling for mobile
+  let isDown = false;
+  let startX;
+  let scrollLeft;
 
-  function getSlidesPerView() {
-    if (window.innerWidth >= 1024) return 3;
-    if (window.innerWidth >= 768) return 2;
-    return 1;
-  }
-
-  function updateCarousel() {
-    const slidesPerView = getSlidesPerView();
-    const slides = track.querySelectorAll('.testimonials-carousel-slide');
-    const maxIndex = Math.max(0, slides.length - slidesPerView);
-
-    currentIndex = Math.min(currentIndex, maxIndex);
-
-    const slideWidth = 100 / slidesPerView;
-    slides.forEach((slide) => {
-      slide.style.flex = `0 0 ${slideWidth}%`;
-      slide.style.maxWidth = `${slideWidth}%`;
-    });
-
-    const offset = -(currentIndex * slideWidth);
-    track.style.transform = `translateX(${offset}%)`;
-
-    // Update button states
-    prevBtn.disabled = currentIndex === 0;
-    nextBtn.disabled = currentIndex >= maxIndex;
-  }
-
-  prevBtn.addEventListener('click', () => {
-    if (currentIndex > 0) {
-      currentIndex -= 1;
-      updateCarousel();
-    }
+  track.addEventListener('mousedown', (e) => {
+    // Only enable drag on mobile or when animation is disabled
+    if (window.innerWidth > 767) return;
+    isDown = true;
+    track.style.cursor = 'grabbing';
+    startX = e.pageX - track.offsetLeft;
+    scrollLeft = track.scrollLeft;
   });
 
-  nextBtn.addEventListener('click', () => {
-    const slidesPerView = getSlidesPerView();
-    const slides = track.querySelectorAll('.testimonials-carousel-slide');
-    const maxIndex = Math.max(0, slides.length - slidesPerView);
-
-    if (currentIndex < maxIndex) {
-      currentIndex += 1;
-      updateCarousel();
-    }
+  track.addEventListener('mouseleave', () => {
+    isDown = false;
+    track.style.cursor = 'grab';
   });
 
-  window.addEventListener('resize', () => {
-    updateCarousel();
+  track.addEventListener('mouseup', () => {
+    isDown = false;
+    track.style.cursor = 'grab';
   });
 
-  // Initial setup
-  updateCarousel();
+  track.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - track.offsetLeft;
+    const walk = (x - startX) * 2;
+    track.scrollLeft = scrollLeft - walk;
+  });
 }
