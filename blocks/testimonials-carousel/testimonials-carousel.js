@@ -9,8 +9,8 @@ export default function decorate(block) {
   const track = document.createElement('div');
   track.className = 'testimonials-carousel-track';
 
-  // Function to create a testimonial card
-  function createCard(card) {
+  // Process each testimonial card
+  cards.forEach((card) => {
     const slide = document.createElement('div');
     slide.className = 'testimonials-carousel-slide';
 
@@ -40,7 +40,7 @@ export default function decorate(block) {
       paragraphs.forEach((p) => {
         const text = p.textContent.trim();
         if (text.startsWith('"') && text.endsWith('"') && !text.includes('-')) {
-          // This is the main quote
+          // This is the main quote/subtitle - blue and bold
           const quote = document.createElement('div');
           quote.className = 'testimonials-quote';
           quote.textContent = text;
@@ -85,17 +85,7 @@ export default function decorate(block) {
     }
 
     slide.appendChild(cardEl);
-    return slide;
-  }
-
-  // Process each testimonial card
-  cards.forEach((card) => {
-    track.appendChild(createCard(card));
-  });
-
-  // Duplicate cards for infinite scroll effect (only for desktop auto-scroll)
-  cards.forEach((card) => {
-    track.appendChild(createCard(card));
+    track.appendChild(slide);
   });
 
   carousel.appendChild(track);
@@ -103,36 +93,4 @@ export default function decorate(block) {
   // Clear and append
   block.textContent = '';
   block.appendChild(carousel);
-
-  // Touch/swipe handling for mobile
-  let isDown = false;
-  let startX;
-  let scrollLeft;
-
-  track.addEventListener('mousedown', (e) => {
-    // Only enable drag on mobile or when animation is disabled
-    if (window.innerWidth > 767) return;
-    isDown = true;
-    track.style.cursor = 'grabbing';
-    startX = e.pageX - track.offsetLeft;
-    scrollLeft = track.scrollLeft;
-  });
-
-  track.addEventListener('mouseleave', () => {
-    isDown = false;
-    track.style.cursor = 'grab';
-  });
-
-  track.addEventListener('mouseup', () => {
-    isDown = false;
-    track.style.cursor = 'grab';
-  });
-
-  track.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - track.offsetLeft;
-    const walk = (x - startX) * 2;
-    track.scrollLeft = scrollLeft - walk;
-  });
 }
