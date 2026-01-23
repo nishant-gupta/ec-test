@@ -1,0 +1,288 @@
+/* Cards Stats Block - Maruti Suzuki Driving School */
+
+.cards-stats {
+  padding: 30px 0;
+}
+
+.cards-stats > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 15px;
+}
+
+/* Individual stat card - horizontal layout with icon left, text right */
+.cards-stats > ul > li {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--color-white, #fff);
+  border: 1px solid #e8e8e8;
+  border-radius: 7px;
+  box-shadow: 0 0 10px 0 rgb(204 204 204 / 50%);
+  padding: 15px 20px;
+  transition: box-shadow 0.2s ease;
+}
+
+.cards-stats > ul > li:hover {
+  box-shadow: 0 2px 15px 0 rgb(204 204 204 / 80%);
+}
+
+/* ============================================
+   COURSE CARDS VARIANT
+   Cards with bullet lists (modules/hours) get course card styling
+   ============================================ */
+
+/* Detect course cards: cards that have ul inside the body (bullet points) */
+.cards-stats > ul > li:has(.cards-stats-card-body ul) {
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Course card image - full width at top */
+.cards-stats > ul > li:has(.cards-stats-card-body ul) .cards-stats-card-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.cards-stats > ul > li:has(.cards-stats-card-body ul) .cards-stats-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Course card body */
+.cards-stats > ul > li:has(.cards-stats-card-body ul) .cards-stats-card-body {
+  padding: 20px;
+}
+
+/* Course title */
+.cards-stats > ul > li:has(.cards-stats-card-body ul) .cards-stats-card-body p:first-child strong {
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-brand-primary, #171c8f);
+  margin-bottom: 10px;
+  text-transform: none;
+}
+
+/* Course description */
+.cards-stats > ul > li:has(.cards-stats-card-body ul) .cards-stats-card-body p:nth-child(2) {
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  text-transform: none;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Module/Hours bullet list */
+.cards-stats .cards-stats-card-body ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cards-stats .cards-stats-card-body ul li {
+  background: rgb(249, 252, 252);
+  border: 1px solid rgb(177, 179, 182);
+  border-radius: 4px;
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Extract number from bullet text and style it */
+.cards-stats .cards-stats-card-body ul li::before {
+  content: none;
+}
+
+.cards-stats .cards-stats-card-body ul li {
+  font-size: 14px;
+  color: #333;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Price styling for course cards */
+.cards-stats > ul > li:has(.cards-stats-card-body ul) .cards-stats-card-body p:has(strong):not(:first-child) {
+  font-size: 20px;
+  color: var(--color-brand-primary, #171c8f);
+  font-weight: 600;
+  margin: 15px 0 10px;
+}
+
+.cards-stats > ul > li:has(.cards-stats-card-body ul) .cards-stats-card-body p:has(strong):not(:first-child) strong {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Icon/Image on left - fixed size (for stats cards) */
+.cards-stats .cards-stats-card-image {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards-stats .cards-stats-card-image img,
+.cards-stats > ul > li > picture img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+}
+
+/* Card body - text content on right */
+.cards-stats .cards-stats-card-body {
+  flex: 1;
+  padding: 0;
+}
+
+/* Stats number - large blue number */
+.cards-stats .cards-stats-card-body p:first-child,
+.cards-stats .cards-stats-card-body strong {
+  display: block;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--color-brand-primary, #171c8f);
+  line-height: 1.2;
+  margin: 0 0 2px;
+}
+
+/* Make the actual number bold */
+.cards-stats .cards-stats-card-body p:first-child strong,
+.cards-stats .cards-stats-card-body strong {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+/* Stats label - uppercase blue text */
+.cards-stats .cards-stats-card-body p:nth-child(2) {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-brand-primary, #171c8f);
+  text-transform: uppercase;
+  margin: 0;
+  letter-spacing: 0.3px;
+  line-height: 1.3;
+}
+
+/* Description text (if present) */
+.cards-stats .cards-stats-card-body p:nth-child(3) {
+  font-size: 13px;
+  color: var(--text-color-muted, #5b7083);
+  line-height: 1.5;
+  margin: 8px 0 0;
+}
+
+/* Heading styles if used instead of p */
+.cards-stats .cards-stats-card-body h2,
+.cards-stats .cards-stats-card-body h3,
+.cards-stats .cards-stats-card-body h4 {
+  margin: 0;
+}
+
+.cards-stats .cards-stats-card-body h2 {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--color-brand-primary, #171c8f);
+  line-height: 1.2;
+}
+
+.cards-stats .cards-stats-card-body h3,
+.cards-stats .cards-stats-card-body h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-brand-primary, #171c8f);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* CTA link in cards */
+.cards-stats .cards-stats-card-body a {
+  display: inline-block;
+  background: var(--color-brand-primary, #171c8f);
+  color: var(--color-white, #fff);
+  padding: 10px 20px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.cards-stats .cards-stats-card-body a:hover {
+  background: var(--color-brand-primary-dark, #131776);
+}
+
+/* Two-column layout on tablet */
+@media (min-width: 600px) {
+  .cards-stats > ul {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+
+  /* Course cards: 2 columns max */
+  .cards-stats:has(.cards-stats-card-body ul) > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Three-column layout on desktop */
+@media (min-width: 900px) {
+  .cards-stats > ul {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 24px;
+  }
+
+  .cards-stats > ul > li {
+    padding: 18px 22px;
+  }
+
+  .cards-stats .cards-stats-card-image,
+  .cards-stats .cards-stats-card-image img {
+    width: 55px;
+    height: 55px;
+  }
+
+  /* Course cards: stay at 2 columns */
+  .cards-stats:has(.cards-stats-card-body ul) > ul {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Reset padding for course cards */
+  .cards-stats > ul > li:has(.cards-stats-card-body ul) {
+    padding: 0;
+  }
+}
+
+/* Four to six column options for larger screens */
+@media (min-width: 1200px) {
+  .cards-stats > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Course cards: stay at 2 columns centered */
+  .cards-stats:has(.cards-stats-card-body ul) > ul {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1000px;
+  }
+}

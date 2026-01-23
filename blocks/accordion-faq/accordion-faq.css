@@ -1,0 +1,139 @@
+/* Accordion FAQ Block - Maruti Suzuki Driving School */
+
+.accordion-faq {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Individual FAQ item */
+.accordion-faq details {
+  background: var(--color-white, #fff);
+  border: 1px solid rgb(219 226 234);
+  border-radius: 5px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.accordion-faq details:last-child {
+  margin-bottom: 0;
+}
+
+/* Question/Summary styling */
+.accordion-faq details summary {
+  position: relative;
+  padding: 18px 50px 18px 20px;
+  cursor: pointer;
+  list-style: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-brand-primary, #171c8f);
+  line-height: 1.4;
+  transition: background-color 0.2s ease;
+}
+
+.accordion-faq details summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-faq details summary::marker {
+  display: none;
+}
+
+/* Expand/collapse arrow */
+.accordion-faq details summary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--color-brand-primary, #171c8f);
+  border-width: 0 2px 2px 0;
+  transform: translateY(-70%) rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.accordion-faq details[open] summary::after {
+  transform: translateY(-30%) rotate(-135deg);
+}
+
+/* Hover state */
+.accordion-faq details summary:hover {
+  background: var(--color-background-light, #f9f8fe);
+}
+
+/* Open state header */
+.accordion-faq details[open] summary {
+  background: var(--color-background-light, #f9f8fe);
+  border-bottom: 1px solid rgb(219 226 234);
+}
+
+/* Answer/Content styling */
+.accordion-faq details .accordion-faq-item-body,
+.accordion-faq details > div:last-child {
+  padding: 20px;
+  background: var(--color-white, #fff);
+}
+
+.accordion-faq details p {
+  margin: 0 0 15px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-color, #000);
+}
+
+.accordion-faq details p:last-child {
+  margin-bottom: 0;
+}
+
+/* Lists in answers */
+.accordion-faq details ul,
+.accordion-faq details ol {
+  margin: 0 0 15px;
+  padding-left: 20px;
+}
+
+.accordion-faq details li {
+  margin-bottom: 8px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-color, #000);
+}
+
+/* Links in answers */
+.accordion-faq details a {
+  color: var(--color-brand-primary, #171c8f);
+  text-decoration: underline;
+}
+
+.accordion-faq details a:hover {
+  color: var(--color-brand-primary-dark, #131776);
+}
+
+/* Section heading above accordion */
+.accordion-faq-wrapper h2,
+.accordion-faq-wrapper h3 {
+  color: var(--color-brand-primary, #171c8f);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .accordion-faq {
+    padding: 30px 0;
+  }
+
+  .accordion-faq details summary {
+    padding: 20px 55px 20px 25px;
+    font-size: 17px;
+  }
+
+  .accordion-faq details .accordion-faq-item-body,
+  .accordion-faq details > div:last-child {
+    padding: 25px;
+  }
+}

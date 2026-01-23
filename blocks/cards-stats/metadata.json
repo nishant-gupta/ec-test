@@ -1,0 +1,40 @@
+{
+  "variantName": "cards-stats",
+  "baseBlock": "cards",
+  "version": "1.0.0",
+  "created": "2026-01-22T15:43:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.marutisuzukidrivingschool.com/",
+    "originPage": "Homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "statistics",
+    "imagePattern": "icon"
+  },
+  "contentPattern": {
+    "structure": "icon + number + description",
+    "buttonCount": 0,
+    "imageCount": 1
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "statistics sections",
+      "key metrics displays",
+      "feature highlights with icons",
+      "value propositions"
+    ],
+    "notSuitableFor": [
+      "product cards with photos",
+      "team member profiles",
+      "blog article cards"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/content/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-01-22T15:43:00.000Z"
+  }
+}

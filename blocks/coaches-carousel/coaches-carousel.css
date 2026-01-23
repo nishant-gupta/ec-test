@@ -1,0 +1,198 @@
+/* Coaches Carousel Block */
+.coaches-carousel {
+  padding: 40px 0;
+  overflow: hidden;
+}
+
+.coaches-carousel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.coaches-carousel-viewport {
+  overflow: hidden;
+}
+
+.coaches-carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.coaches-carousel-slide {
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+/* Card Styling */
+.coaches-carousel-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 8%);
+  border: 1px solid #eee;
+  padding: 24px 20px;
+  height: 100%;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.coaches-carousel-card:hover {
+  box-shadow: 0 4px 20px rgb(0 0 0 / 12%);
+  transform: translateY(-2px);
+}
+
+/* Circular profile image */
+.coaches-carousel-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 3px solid #f0f0f0;
+}
+
+.coaches-carousel-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card body */
+.coaches-carousel-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  width: 100%;
+}
+
+/* Coach name */
+.coaches-name {
+  color: #333;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+/* Location */
+.coaches-location {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+/* Motto/headline - blue */
+.coaches-motto {
+  color: var(--color-brand-primary, #171c8f);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+/* Description */
+.coaches-description {
+  color: #555;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+/* Navigation buttons */
+.coaches-carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--color-brand-primary, #171c8f);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--color-brand-primary, #171c8f);
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+}
+
+.coaches-carousel-nav:hover:not(:disabled) {
+  background: var(--color-brand-primary, #171c8f);
+  color: #fff;
+}
+
+.coaches-carousel-nav:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.coaches-carousel-prev {
+  left: 5px;
+}
+
+.coaches-carousel-next {
+  right: 5px;
+}
+
+.coaches-carousel-nav span {
+  line-height: 1;
+  margin-top: -2px;
+}
+
+/* Responsive */
+@media (max-width: 1199px) {
+  .coaches-carousel-slide {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+  }
+}
+
+@media (max-width: 899px) {
+  .coaches-carousel-slide {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .coaches-carousel-container {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 599px) {
+  .coaches-carousel-slide {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .coaches-carousel-container {
+    padding: 0 45px;
+  }
+
+  .coaches-carousel-nav {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+
+  .coaches-carousel-card {
+    min-height: 280px;
+    padding: 20px 16px;
+  }
+
+  .coaches-carousel-image {
+    width: 80px;
+    height: 80px;
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "variantName": "columns-cta",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-01-22T15:43:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.marutisuzukidrivingschool.com/",
+    "originPage": "Homepage",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "accent",
+    "density": "compact",
+    "purpose": "call-to-action",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "heading + description + CTA button",
+    "buttonCount": 1,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "call-to-action banners",
+      "promotional sections",
+      "quiz/survey invitations",
+      "contact sections"
+    ],
+    "notSuitableFor": [
+      "content comparisons",
+      "side-by-side features",
+      "image galleries"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/content/index"],
+    "reuseCount": 1,
+    "lastUsed": "2026-01-22T15:43:00.000Z"
+  }
+}
