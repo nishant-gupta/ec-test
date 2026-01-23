@@ -1,0 +1,141 @@
+.accordion {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.accordion-item {
+  margin-bottom: 16px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.accordion-item:last-child {
+  margin-bottom: 0;
+}
+
+.accordion-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 28px;
+  background: white;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  margin: 0;
+  border-radius: 0;
+}
+
+.accordion-header:hover,
+.accordion-header:focus {
+  background: white;
+  background-color: white;
+  border-radius: 0;
+}
+
+.accordion-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  flex: 1;
+  padding-right: 20px;
+  line-height: 1.5;
+}
+
+.accordion-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-blue);
+  font-size: 24px;
+  font-weight: 300;
+  width: 24px;
+  height: 24px;
+}
+
+.accordion-icon svg {
+  display: none;
+}
+
+.accordion-icon::before {
+  content: '+';
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 400;
+}
+
+.accordion-header.active .accordion-icon::before {
+  content: '−';
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.accordion-body {
+  padding: 8px 32px 28px 32px;
+}
+
+.accordion-body p {
+  margin: 0 0 16px 0;
+  color: #333;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.accordion-body p:last-child {
+  margin-bottom: 0;
+}
+
+.accordion-body ul,
+.accordion-body ol {
+  margin: 0 0 16px 20px;
+  color: #666;
+}
+
+.accordion-body li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* Mobile responsive */
+@media (width <= 768px) {
+  .accordion {
+    margin: 30px auto;
+    padding: 0 16px;
+  }
+
+  .accordion-item {
+    margin-bottom: 12px;
+  }
+
+  .accordion-header {
+    padding: 20px 20px;
+  }
+
+  .accordion-title {
+    font-size: 13px;
+    letter-spacing: 0.4px;
+  }
+
+  .accordion-body {
+    padding: 0 20px 20px 20px;
+  }
+
+  .accordion-body p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .accordion-icon::before {
+    font-size: 24px;
+  }
+}
